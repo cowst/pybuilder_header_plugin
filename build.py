@@ -24,16 +24,17 @@ use_plugin('python.core')
 use_plugin('python.distutils')
 use_plugin('python.flake8')
 use_plugin('python.install_dependencies')
+
 use_plugin('pypi:pybuilder_release_plugin')
 
+name = 'pybuilder_header_plugin'
+version = '0.0.2'
+
+authors = [Author('Michael Gruber', 'aelgru@gmail.com')]
 url = 'https://github.com/aelgru/pybuilder_header_plugin'
 description = 'Please visit {0} for more information!'.format(url)
-
-name = 'pybuilder_header_plugin'
-authors = [Author('Michael Gruber', 'aelgru@gmail.com')]
 license = 'Apache License, Version 2.0'
-summary = 'PyBuilder Header PlugIn'
-version = '0.0.2'
+summary = 'PyBuilder Header Plugin'
 
 default_task = ['analyze', 'publish', 'check_source_file_headers']
 
