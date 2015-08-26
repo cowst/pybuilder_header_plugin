@@ -80,6 +80,9 @@ def check_source_file_headers(project, logger):
     test_directory = join('src', 'unittest', 'python')
     affected_files += search_in_directory(test_directory, expected_header, logger)
 
+    test_directory = join('src', 'integrationtest', 'python')
+    affected_files += search_in_directory(test_directory, expected_header, logger)
+
     if affected_files > 0:
         message = "Found %d source files containing unexpected header." % affected_files
 
