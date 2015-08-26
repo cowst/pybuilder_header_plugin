@@ -72,19 +72,19 @@ def check_source_file_headers(project, logger):
     if break_build and not expected_header:
         raise PyBuilderException('Please specify expected file header!')
 
-    affected_files = 0
+    affected_files_count = 0
 
     source_directory = join('src', 'main', 'python')
-    affected_files += search_in_directory(source_directory, expected_header, logger)
+    affected_files_count += search_in_directory(source_directory, expected_header, logger)
 
-    test_directory = join('src', 'unittest', 'python')
-    affected_files += search_in_directory(test_directory, expected_header, logger)
+    unittest_directory = join('src', 'unittest', 'python')
+    affected_files_count += search_in_directory(unittest_directory, expected_header, logger)
 
-    test_directory = join('src', 'integrationtest', 'python')
-    affected_files += search_in_directory(test_directory, expected_header, logger)
+    integrationtest_directory = join('src', 'integrationtest', 'python')
+    affected_files_count += search_in_directory(integrationtest_directory, expected_header, logger)
 
-    if affected_files > 0:
-        message = "Found %d source files containing unexpected header." % affected_files
+    if affected_files_count:
+        message = "Found %d source files containing unexpected header." % affected_files_count
 
         if break_build:
             raise PyBuilderException(message)
