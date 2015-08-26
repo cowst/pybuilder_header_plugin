@@ -28,7 +28,7 @@ use_plugin('python.install_dependencies')
 use_plugin('pypi:pybuilder_release_plugin')
 
 name = 'pybuilder_header_plugin'
-version = '0.0.2'
+version = '0.0.3'
 
 authors = [Author('Michael Gruber', 'aelgru@gmail.com')]
 url = 'https://github.com/aelgru/pybuilder_header_plugin'
