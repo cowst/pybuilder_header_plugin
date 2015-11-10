@@ -37,20 +37,27 @@ def check_file(file_name, expected_header, logger):
     return False
 
 
-def find_matching_files(source_directory):
+def find_matching_files(source_directory, exclude_patterns, logger):
     matching_files = []
     for root, directory_names, file_names in walk(source_directory):
+        logger.debug('Dirpath: %s' % root)
+        logger.debug('Dirnames: %s' % directory_names)
+        logger.debug('Filenames: %s' % file_names)
+        for curr_dir in directory_names:
+            if join(root, curr_dir) in exclude_patterns:
+                directory_names.remove(curr_dir)
         for filename in filter(file_names, '*.py'):
-            path = join(root, filename)
-            matching_files.append(path)
+            if join(root, filename) not in exclude_patterns:
+                path = join(root, filename)
+                matching_files.append(path)
 
     return matching_files
 
 
-def search_in_directory(source_directory, expected_header, logger):
+def search_in_directory(source_directory, exclude_patterns, expected_header, logger):
     affected_files = 0
 
-    matching_files = find_matching_files(source_directory)
+    matching_files = find_matching_files(source_directory, exclude_patterns, logger)
 
     for file_name in matching_files:
         found_something = check_file(file_name, expected_header, logger)
@@ -68,6 +75,11 @@ def check_source_file_headers(project, logger):
 
     expected_header = project.get_property('pybuilder_header_plugin_expected_header')
     break_build = project.get_property('pybuilder_header_plugin_break_build')
+    exclude_patterns = []
+    for pattern in project.get_property('pybuilder_header_plugin_exclude_patterns'):
+        exclude_patterns.append(pattern.rstrip('/'))
+
+    logger.debug('Exclude patterns: %s' % exclude_patterns)
 
     if break_build and not expected_header:
         raise PyBuilderException('Please specify expected file header!')
@@ -75,13 +87,13 @@ def check_source_file_headers(project, logger):
     affected_files_count = 0
 
     source_directory = join('src', 'main', 'python')
-    affected_files_count += search_in_directory(source_directory, expected_header, logger)
+    affected_files_count += search_in_directory(source_directory, exclude_patterns, expected_header, logger)
 
     unittest_directory = join('src', 'unittest', 'python')
-    affected_files_count += search_in_directory(unittest_directory, expected_header, logger)
+    affected_files_count += search_in_directory(unittest_directory, exclude_patterns, expected_header, logger)
 
     integrationtest_directory = join('src', 'integrationtest', 'python')
-    affected_files_count += search_in_directory(integrationtest_directory, expected_header, logger)
+    affected_files_count += search_in_directory(integrationtest_directory, exclude_patterns, expected_header, logger)
 
     if affected_files_count:
         message = "Found %d source files containing unexpected header." % affected_files_count

@@ -28,7 +28,7 @@ use_plugin('python.install_dependencies')
 use_plugin('pypi:pybuilder_release_plugin')
 
 name = 'pybuilder_header_plugin'
-version = '0.0.3'
+version = '0.0.4'
 
 authors = [Author('Michael Gruber', 'aelgru@gmail.com')]
 url = 'https://github.com/aelgru/pybuilder_header_plugin'
@@ -49,6 +49,7 @@ def set_properties(project):
 
     project.set_property('pybuilder_header_plugin_break_build', True)
     project.set_property('pybuilder_header_plugin_expected_header', open('header.py').read())
+    project.set_property('pybuilder_header_plugin_exclude_patterns', ['src/main/python/thirdparty/', 'src/main/python/another_file.py'])
 
     project.get_property('distutils_commands').append('bdist_wheel')
     project.set_property('distutils_classifiers', [

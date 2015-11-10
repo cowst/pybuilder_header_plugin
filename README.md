@@ -17,6 +17,8 @@ Configure the plugin within your `init` function:
 def init(project):
     project.set_property('pybuilder_header_plugin_break_build', True)
     project.set_property('pybuilder_header_plugin_expected_header', "# Copyright\n")
+    project.set_property('pybuilder_header_plugin_exclude_patterns', ['src/main/python/thirdparty/', 'src/main/python/another_file.py'])
 ```
 
 This will break the build if one of your source files does not start with the comment line `# Copyright`.
+It will also ignore files within the exclusion pattern.
