@@ -1,5 +1,5 @@
 #   pybuilder_header_plugin
-#   Copyright 2015 Diego Costantini
+#   Copyright 2015 Diego Costantini, Michael Gruber
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");
 #   you may not use this file except in compliance with the License.
@@ -30,7 +30,7 @@ use_plugin('pypi:pybuilder_release_plugin')
 name = 'pybuilder_header_plugin'
 version = '0.1.0'
 
-authors = [Author('Diego Costantini', 'diego.costantini@gmail.com')]
+authors = [Author('Diego Costantini', 'diego.costantini@gmail.com'), Author('Michael Gruber', 'aelgru@gmail.com')]
 url = 'https://github.com/cowst/pybuilder_header_plugin'
 description = 'Please visit {0} for more information!'.format(url)
 license = 'Apache License, Version 2.0'
