@@ -1,5 +1,5 @@
 #   pybuilder_header_plugin
-#   Copyright 2015 Michael Gruber
+#   Copyright 2015 Diego Costantini
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");
 #   you may not use this file except in compliance with the License.
@@ -28,10 +28,10 @@ use_plugin('python.install_dependencies')
 use_plugin('pypi:pybuilder_release_plugin')
 
 name = 'pybuilder_header_plugin'
-version = '0.0.4'
+version = '0.1.0'
 
-authors = [Author('Michael Gruber', 'aelgru@gmail.com')]
-url = 'https://github.com/aelgru/pybuilder_header_plugin'
+authors = [Author('Diego Costantini', 'diego.costantini@gmail.com')]
+url = 'https://github.com/cowst/pybuilder_header_plugin'
 description = 'Please visit {0} for more information!'.format(url)
 license = 'Apache License, Version 2.0'
 summary = 'PyBuilder Header Plugin'
@@ -49,11 +49,12 @@ def set_properties(project):
 
     project.set_property('pybuilder_header_plugin_break_build', True)
     project.set_property('pybuilder_header_plugin_expected_header', open('header.py').read())
-    project.set_property('pybuilder_header_plugin_exclude_patterns', ['src/main/python/thirdparty/', 'src/main/python/another_file.py'])
+    project.set_property('pybuilder_header_plugin_exclude_patterns',
+                         ['src/main/python/thirdparty/', 'src/main/python/another_file.py'])
 
     project.get_property('distutils_commands').append('bdist_wheel')
     project.set_property('distutils_classifiers', [
-        'Development Status :: 1 - Planning',
+        'Development Status :: 4 - Beta',
         'Environment :: Console',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: Apache Software License',

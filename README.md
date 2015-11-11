@@ -1,4 +1,4 @@
-PyBuilder Header Plugin [![Build Status](https://travis-ci.org/aelgru/pybuilder_header_plugin.svg?branch=master)](https://travis-ci.org/aelgru/pybuilder_header_plugin)
+PyBuilder Header Plugin [![Build Status](https://travis-ci.org/cowst/pybuilder_header_plugin.svg?branch=master)](https://travis-ci.org/cowst/pybuilder_header_plugin)
 =======================
 
 Ensures that all your source files contain the same file header.
@@ -21,4 +21,8 @@ def init(project):
 ```
 
 This will break the build if one of your source files does not start with the comment line `# Copyright`.
+
 It will also ignore files within the exclusion pattern.
+
+
+Thanks to Michael Gruber for starting up the project with the initial releases.
