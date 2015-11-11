@@ -13,3 +13,7 @@ install:
 
 script:
   - pyb --verbose
+
+notifications:
+  email:
+    - diego.costantini@gmail.com
