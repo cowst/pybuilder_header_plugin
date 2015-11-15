@@ -28,7 +28,7 @@ use_plugin('python.install_dependencies')
 use_plugin('pypi:pybuilder_release_plugin')
 
 name = 'pybuilder_header_plugin'
-version = '0.1.0'
+version = '0.1.1'
 
 authors = [Author('Diego Costantini', 'diego.costantini@gmail.com'), Author('Michael Gruber', 'aelgru@gmail.com')]
 url = 'https://github.com/cowst/pybuilder_header_plugin'

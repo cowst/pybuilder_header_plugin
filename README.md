@@ -23,6 +23,3 @@ def init(project):
 This will break the build if one of your source files does not start with the comment line `# Copyright`.
 
 It will also ignore files within the exclusion pattern.
-
-
-Thanks to Michael Gruber for starting up the project with the initial releases.
